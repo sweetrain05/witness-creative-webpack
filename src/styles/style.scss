@@ -272,16 +272,13 @@ main {
         &_btn_contact {
             text-transform: uppercase;
             font-size: $mobile-font-small;
+            color: $color-navy;
             margin: 0 0 60px 25px;
             width: 145px;
             transition: transform 0.3s ease;
 
             &:hover {
                 transform: translateX(10px);
-            }
-
-            a {
-                color: $color-navy;
             }
         }
 
