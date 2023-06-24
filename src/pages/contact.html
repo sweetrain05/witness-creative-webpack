@@ -1,0 +1,55 @@
+<article class="page contactUs">
+    <div class="contactUs_formSub">
+        <p class="animate">
+            Tell us about your mission, and we'll get back to you right away!
+        </p>
+        <div class="form_input_container">
+            <form
+                id="contact-form"
+                accept-charset="utf-8"
+                action="https://formspree.io/f/mjvdqojb"
+                method="POST"
+            >
+                <li>
+                    <input
+                        type="text"
+                        name="name"
+                        value="Your name"
+                        class="form_input"
+                        required
+                    />
+                </li>
+                <li>
+                    <input
+                        type="email"
+                        name="email"
+                        value="Email"
+                        class="form_input"
+                        required
+                    />
+                </li>
+                <li>
+                    <input
+                        type="text"
+                        name="phone"
+                        value="Phone"
+                        class="form_input"
+                    />
+                </li>
+                <li>
+                    <textarea
+                        name="message"
+                        class="form_input"
+                        placeholder="Please tell us a bit about your mission"
+                        required
+                    ></textarea>
+                </li>
+                <li>
+                    <button id="my-form-button" type="submit" class="send_btn">
+                        Send
+                    </button>
+                </li>
+            </form>
+        </div>
+    </div>
+</article>
