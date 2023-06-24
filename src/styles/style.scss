@@ -183,9 +183,10 @@ body.hide-scrollbar::-webkit-scrollbar-thumb {
             color: $color-navy;
             font-size: $mobile-font-xlarge;
             padding: 10px;
-            position: fixed;
-            top: 20px;
-            right: 20px;
+            margin-left: 80vw;
+            // position: fixed;
+            // top: 20px;
+            // right: 20px;
             transition: transform 0.3s ease-in-out;
 
             &:hover {
@@ -196,21 +197,18 @@ body.hide-scrollbar::-webkit-scrollbar-thumb {
         }
 
         .menu_list {
-            margin-top: 15vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
+            justify-content: center;
             align-items: center;
-            font-size: $mobile-font-xlarge;
-            text-transform: uppercase;
+            font-size: $mobile-font-large;
+
             color: $color-navy;
-            font-family: $main-font;
+            text-transform: uppercase;
             text-align: center;
-            margin: auto;
 
             li {
-                padding: 5px;
-                margin: 20px;
+                font-family: $main-font;
+                padding: 10px;
+                margin-bottom: 7vh;
                 transition: 0.5s ease;
                 cursor: pointer;
 
@@ -225,8 +223,7 @@ body.hide-scrollbar::-webkit-scrollbar-thumb {
             flex-direction: row;
             justify-content: center;
 
-            margin: 50px;
-            margin-bottom: 20vh;
+            margin-bottom: 15vh;
 
             li {
                 padding: 10px;
