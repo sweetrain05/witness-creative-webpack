@@ -27,13 +27,15 @@ function resizeHeader() {
         if (screenWidth < 767) {
             // show the hamburger menu when screen size is small
             headerRight.innerHTML = `
-            <div class="hamburger-menu menu-toggle">
+            <div class="hamburger-menu">
                 <svg width="25" height="25">
                     <image href="./img/menubar.svg" width="100%" height="100%" />
                 </svg>
             </div>
             `;
-            toggleBtnsHandler();
+            // add a toggle btn event to created hamburger element
+            const toggleBtn = document.querySelector(".hamburger-menu");
+            toggleBtn.addEventListener("click", toggleHandler);
         } else {
             // show list when screen size is big
             menulist("header");
@@ -44,34 +46,15 @@ function resizeHeader() {
     // This will show either 'hanburger menu' or 'contact text' depending on current screen size.
     headerDesignHandler(getCurrentScreenWidth());
 }
+
 // --------------------------------------------------------
-// Now, let's add toggle effect to hamburger menu.
-function toggleBtnsHandler() {
-    // select all the elements that are related to toggle
-    const toggleBtns = document.querySelectorAll(".menu-toggle");
 
-    // when any toggle element is clicked, it will appear/disappear
-
-    toggleBtns.forEach((btn) => {
-        btn.removeEventListener("click", toggleHandler);
-        btn.addEventListener("click", toggleHandler);
-    });
-
-    function toggleHandler(e) {
-        e.preventDefault();
-        console.log("toggle button clicked");
-        if (toggleBool.state === false) {
-            showOverlay();
-            console.log("show");
-        } else {
-            hideOverlay();
-            console.log("hide");
-        }
-    }
+function overlayCloseBtnHandler() {
+    const toggleBtn = document.querySelector(".menu_btn_close");
+    toggleBtn.addEventListener("click", toggleHandler);
 }
 
 // make a state for toggle status and provide getter & setter for it
-// let toggleState = false;
 const toggleBool = {
     value: false,
     get state() {
@@ -81,6 +64,15 @@ const toggleBool = {
         this.value = value;
     },
 };
+
+function toggleHandler(e) {
+    e.preventDefault();
+    if (toggleBool.state === false) {
+        showOverlay();
+    } else {
+        hideOverlay();
+    }
+}
 
 // hide the overlay element and change toggle status
 function hideOverlay() {
@@ -97,6 +89,7 @@ function showOverlay() {
     if (!toggleBool.state) {
         menuOverlay.style.display = "flex";
         toggleBool.state = true;
+        overlayCloseBtnHandler();
     }
 }
 
