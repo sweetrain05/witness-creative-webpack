@@ -33,6 +33,7 @@ function resizeHeader() {
                 </svg>
             </div>
             `;
+            toggleBtnsHandler();
         } else {
             // show list when screen size is big
             menulist("header");
@@ -42,34 +43,32 @@ function resizeHeader() {
     // when screen is resized or loaded, execute headerDesignHandler function.
     // This will show either 'hanburger menu' or 'contact text' depending on current screen size.
     headerDesignHandler(getCurrentScreenWidth());
-
-    // --------------------------------------------------------
-    // Now, let's add toggle effect to hamburger menu.
-    function toggleBtnsHandler() {
-        // select all the elements that is related to toggle
-        const toggleBtns = document.querySelectorAll(".menu-toggle");
-
-        // when any toggle element is clicked, it will appear/disappear
-        toggleBtns.forEach((btn) => {
-            btn.addEventListener("click", (e) => {
-                e.preventDefault();
-                console.log("toggle button clicked");
-                if (toggleBool.state === false) {
-                    showOverlay();
-                    console.log("show");
-                } else {
-                    hideOverlay();
-                    console.log("hide");
-                }
-            });
-        });
-    }
-    toggleBtnsHandler();
 }
+// --------------------------------------------------------
+// Now, let's add toggle effect to hamburger menu.
+function toggleBtnsHandler() {
+    // select all the elements that are related to toggle
+    const toggleBtns = document.querySelectorAll(".menu-toggle");
 
-// if (toggleBool.state === true) {
-//     hideOverlay();
-// }
+    // when any toggle element is clicked, it will appear/disappear
+
+    toggleBtns.forEach((btn) => {
+        btn.removeEventListener("click", toggleHandler);
+        btn.addEventListener("click", toggleHandler);
+    });
+
+    function toggleHandler(e) {
+        e.preventDefault();
+        console.log("toggle button clicked");
+        if (toggleBool.state === false) {
+            showOverlay();
+            console.log("show");
+        } else {
+            hideOverlay();
+            console.log("hide");
+        }
+    }
+}
 
 // make a state for toggle status and provide getter & setter for it
 // let toggleState = false;
@@ -78,7 +77,7 @@ const toggleBool = {
     get state() {
         return this.value;
     },
-    set setState(value) {
+    set state(value) {
         this.value = value;
     },
 };
@@ -86,15 +85,19 @@ const toggleBool = {
 // hide the overlay element and change toggle status
 function hideOverlay() {
     const menuOverlay = document.querySelector(".menu_container_overlay");
-    menuOverlay.style.display = "none";
-
-    toggleBool.setState = false;
+    if (toggleBool.state) {
+        menuOverlay.style.display = "none";
+        toggleBool.state = false;
+    }
 }
+
 // show the overlay element and change toggle status
 function showOverlay() {
     const menuOverlay = document.querySelector(".menu_container_overlay");
-    menuOverlay.style.display = "flex";
-    toggleBool.setState = true;
+    if (!toggleBool.state) {
+        menuOverlay.style.display = "flex";
+        toggleBool.state = true;
+    }
 }
 
 export { resizeHeader, HeaderComponent, hideOverlay };
