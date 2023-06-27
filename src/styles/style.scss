@@ -153,6 +153,7 @@ body.hide-scrollbar::-webkit-scrollbar-thumb {
             li {
                 font-size: $desktop-font-small;
                 color: $color-gray;
+                font-weight: 600;
                 text-transform: uppercase;
                 border-bottom: 1px solid transparent;
                 padding-bottom: 5px;
@@ -160,7 +161,7 @@ body.hide-scrollbar::-webkit-scrollbar-thumb {
                 cursor: pointer;
 
                 &:hover {
-                    border-bottom: 1px solid $color-gray;
+                    border-bottom: 1.5px solid $color-gray;
                 }
             }
         }
@@ -409,6 +410,10 @@ main {
 
         &_circle {
             position: relative;
+            transition-duration: 1s;
+            &:hover {
+                transform: scale(1.1);
+            }
 
             p {
                 position: relative;
