@@ -16,7 +16,6 @@ function menulist(menuLocation) {
         const value = li.innerHTML;
         li.addEventListener("click", (e) => {
             e.preventDefault();
-            hideOverlay();
             switch (value) {
                 case "home":
                     router.navigate("/");
@@ -31,6 +30,7 @@ function menulist(menuLocation) {
                     router.navigate("/");
                     break;
             }
+            hideOverlay();
         });
     });
 }
