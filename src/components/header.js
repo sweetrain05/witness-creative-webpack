@@ -1,12 +1,10 @@
 import { externalLinksList } from "./links.js";
 import { menulist } from "./menulist.js";
 
-// 👉
 function HeaderComponent() {
     externalLinksList("menu");
     menulist("overlay");
 }
-
 // --------------------------------------------------------
 function resizeHeader() {
     // get current screen width size
