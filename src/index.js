@@ -38,7 +38,6 @@ router
             },
             hooks: {
                 after: function () {
-                    // actions to be taken after route changes
                     LandingPageCarousel();
                     LandingPageAnimation();
                     LandingPageEmailSubs();
@@ -53,8 +52,6 @@ router
             },
             hooks: {
                 after: function () {
-                    // actions to be taken after route changes
-                    //
                     scrollTo(0, 0);
                 },
             },
@@ -66,7 +63,6 @@ router
             },
             hooks: {
                 after: function () {
-                    // actions to be taken after route changes
                     ContactPage();
                     scrollTo(0, 0);
                 },
@@ -145,63 +141,3 @@ scrollToTopBtn.addEventListener("click", function () {
         behavior: "smooth",
     });
 });
-
-// --------------------------------------------------------
-// // // 👉 Scroll down to contact form when 'contact us' elements are clicked
-
-// // when window is resized or loaded, get all the new btns and their locations
-// window.addEventListener("resize", getAllBtns);
-// window.addEventListener("load", getAllBtns);
-// function getAllBtns() {
-//     // select all the elements that will lead the user to form location
-//     const goToContactBtns = document.querySelectorAll(".goToContact");
-
-//     // when any elements with .goToContact class is clicked, it will lead to current location of the contact form.
-//     goToContactBtns.forEach((btn) => {
-//         btn.addEventListener("click", (e) => {
-//             e.preventDefault();
-//             window.scrollTo({
-//                 top: getNewLocation(),
-//                 behavior: "smooth",
-//             });
-
-//             // close the menu overlay, if it is displayed
-//             const menuOverlay = document.querySelector(
-//                 ".menu_container_overlay"
-//             );
-//             if (menuOverlay.style.display === "flex") {
-//                 menuOverlay.style.display = "none";
-//             }
-//         });
-//     });
-
-//     // select form by its class
-//     const contactForm = document.querySelector(".contactUs_formSub");
-
-//     // function to get current location of contactForm.
-//     function getNewLocation() {
-//         return contactForm.getBoundingClientRect().top + window.pageYOffset;
-//     }
-// }
-
-// router.on("/", function () {
-//     mainApp.innerHTML = `${landingHTML}`;
-//     window.addEventListener("DOMContentLoaded", () => {
-//         console.log("dom loaded");
-//         LandingPageCarousel();
-//         LandingPageAnimation();
-//         LandingPageEmailSubs();
-//     });
-// });
-// router.on("/contact", function () {
-//     mainApp.innerHTML = `${contactHTML}`;
-//     ContactPage();
-// });
-
-// router.hooks({
-//     after: function () {
-//       // Your code that should run after every route change
-//     }
-//   });
-
-// router.resolve();
