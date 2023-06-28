@@ -1093,6 +1093,7 @@ main {
     cursor: pointer;
     opacity: 0;
     transition: opacity 0.3s;
+    z-index: 999;
 
     img {
         width: 50px;
